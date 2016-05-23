@@ -1,0 +1,145 @@
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.container {
+  margin-top: 150px;
+}
+
+input.error {
+  border-color: brown;
+}
+
+select.error {
+  border-color: brown;
+}
+
+label.error {
+  color: brown;
+}
+
+p {
+  color: grey;
+}
+
+/* users */
+.subscribe-container {
+  max-width: 300px;
+}
+
+.subscribe-credit-card-expiration-label {
+  margin-right: 5px;
+}
+
+.subscribe-credit-card-expiration-month {
+  max-width: 65px;
+  display: inline-block !important
+}
+
+.subscribe-credit-card-expiration-year {
+  max-width: 80px;
+  display: inline-block !important
+}
+
+.subscribe-credit-card-cvv {
+  max-width: 70px;
+  display: inline-block !important
+}
+
+.email-verification-container {
+  max-width: 500px;
+}
+
+.participant-email-wrapper {
+  max-width: 300px;
+}
+
+/* photos */
+.photos-container {
+  max-width: 500px;
+}
+.verification-code-container {
+  max-width: 300px;
+}
+.verification-email-container {
+  max-width: 300px;
+}
+
+.photos-list-view {
+  margin-bottom: 30px;
+}
+.upload-container {
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+.photos-list-item {
+  height: 45px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: burlywood;
+}
