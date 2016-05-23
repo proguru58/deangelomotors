@@ -66,7 +66,8 @@ class Users extends CI_Controller
       $this->authorize_net->setData($auth_net);
       if( $this->authorize_net->authorizeAndCapture() )
       {
-        $code = $this->generate_random_string(32);
+        $this->load->library('Utils');
+        $code = $this->utils->generate_random_string(32);
         $current_user = $this->user_model->register($email, $code);
 
         // set session current user.
@@ -122,16 +123,6 @@ class Users extends CI_Controller
   {
     $this->session->set_userdata(array('userid' => ''));
     redirect('users/login');
-  }
-
-  function generate_random_string($length = 32) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-      $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
   }
 
   function send_welcome_email($email, $code)

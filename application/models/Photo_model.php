@@ -20,14 +20,15 @@ class Photo_model extends CI_Model {
         return $query->result();
     }
 
-    function add($photo)
+    function add($name)
     {
         $this->db->insert('photos', array(
             'owner'=>$this->session->userdata('userid'),
-            'name'=>$photo
+            'name'=>$name
         ));
     }
 
+    // delete record and return file name to be used to store file in photo folder
     function delete($photoid)
     {
         $query = $this->db->get_where('photos', array('id'=>$photoid));

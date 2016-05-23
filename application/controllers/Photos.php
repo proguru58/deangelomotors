@@ -32,7 +32,6 @@ class Photos extends CI_Controller
   // upload file post
   function go()
   {
-
     $image_file_types = array('image/png', 'image/gif', 'image/jpeg');
 
     // check size limist 10MB and presence and type
@@ -45,8 +44,10 @@ class Photos extends CI_Controller
 
     elseif (isset($_FILES['photo'])) {
 
+      $this->load->library('Utils');
+
       $file = read_file($_FILES['photo']['tmp_name']);
-      $name = basename($_FILES['photo']['name']);
+      $name = $this->utils->generate_random_string(12).'_'.basename($_FILES['photo']['name']);
 
       write_file('photos/' . $name, $file);
 
@@ -62,8 +63,8 @@ class Photos extends CI_Controller
   function delete($id)
   {
     //This deletes the file from the database, before returning the name of the file.
-    $name = $this->photo_model->delete($id);
-    unlink('photos/' . $name);
+    $slug = $this->photo_model->delete($id);
+    unlink('photos/' . $slug);
     redirect('photos/index');
   }
 }
