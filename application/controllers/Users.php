@@ -61,7 +61,7 @@ class Users extends CI_Controller
         'x_exp_date'			=> $credit_card_expiration_month . '/' . $credit_card_expiration_year,
         'x_card_code'			=> $cvv,
         'x_description'		=> 'participant join competition billing',
-        'x_amount'				=> '20',
+        'x_amount'				=> '2',
       );
       $this->authorize_net->setData($auth_net);
       if( $this->authorize_net->authorizeAndCapture() )
@@ -106,7 +106,7 @@ class Users extends CI_Controller
     }
     else {
       $this->session->set_userdata(array('userid' => $results));
-      $this->session->set_flashdata('result', array('message' => 'You have been successfully logged in.','class' => 'success'));
+      $this->session->set_flashdata('result', array('message' => 'You have successfully logged in.','class' => 'success'));
       redirect('photos/index');
     }
   }
@@ -130,32 +130,39 @@ class Users extends CI_Controller
     $msg = <<<EOT
 <!DOCTYPE html>
 <html>
-  <head>
-      <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-    </head>
-  <body>
-    <h1>Welcome to Our Photoshoot Competition</h1>
-    <p>
-        You have been successfully subscribed to deangelomotors.com,
-        your participant verification code is : $code.<br>
-      </p>
-    <p>
-        To upload your photo in the contest, just follow this link: <%= @url %>.
-      </p>
-    <p>Thanks for joining and have a great day!</p>
-  </body>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Welcome to Our Photoshoot Competition</h1>
+<p>You have been successfully subscribed to deangelomotors.com.</p>
+<p>Your participant verification code is : $code.</p>
+<p>To upload your photo in the contest, just follow this link: http://www.deangelomotors.com/app/index.php/photos/index.</p>
+</br>
+<p>Thanks for joining and have a great day!</p>
+</body>
 </html>
 EOT;
 
-    // send welcome email to users with code
-    $this->load->library('email');
+//    // send welcome email to users with code
+//    $this->load->library('email');
+//
+//    $this->email->from('info@deangelomotors.com', 'DeAngeloMotors');
+//    $this->email->to($email);
+//    $this->email->subject('Welcome to International Photoshoot Competition');
+//    $this->email->message($msg);
+//
+//    $this->email->send();
+//    $this->email->print_debugger();
 
-    $this->email->from('info@deangelomotors.com', 'DeAngeloMotors');
-    $this->email->to($email);
-    $this->email->subject('Welcome to International Photoshoot Competition');
-    $this->email->message($msg);
+    // To send HTML mail, the Content-type header must be set
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
-    $this->email->send();
-    $this->email->print_debugger();
+    // Additional headers
+    $headers .= 'From: Manny De Angelo <info@deangelomotors.com>' . "\r\n";
+
+    // Mail it
+    mail($email, 'Welcome to International Photoshoot Competition', $msg, $headers);
   }
 }

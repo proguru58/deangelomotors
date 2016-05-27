@@ -3,7 +3,12 @@
     <?php $this->load->view('layout/flash'); ?>
     <h3>Photos</h3>
 
-    <p>Here are your photos.</p>
+    <?php if (count($photos) > 0) {?>
+      <p>Here are your photos uploaded.</p>
+    <?php } else { ?>
+      <p>Upload your photo files.</p>
+    <?php } ?>
+
     <div class="photos-list-view">
 
       <?php foreach ($photos as $photo): ?>
