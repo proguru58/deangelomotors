@@ -12,7 +12,7 @@
       </div>
 
       <div class="actions">
-        <input type="submit" name="upload" class="btn btn-primarys"/>
+        <input type="submit" name="upload" class="btn btn-primary"/>
       </div>
     </form>
 

@@ -18,15 +18,6 @@ pre {
   font-size: 11px;
 }
 
-a {
-  color: #000;
-}
-
-a:hover {
-  color: #fff;
-  background-color: #000;
-}
-
 div.field, div.actions {
   margin-bottom: 10px;
 }
@@ -67,7 +58,7 @@ div.field, div.actions {
 }
 
 .container {
-  margin-top: 150px;
+  margin-top: 0px;
 }
 
 input.error {
@@ -91,6 +82,10 @@ p {
   max-width: 300px;
 }
 
+.login-container {
+  max-width: 300px;
+}
+
 .subscribe-credit-card-expiration-label {
   margin-right: 5px;
 }
@@ -111,7 +106,7 @@ p {
 }
 
 .email-verification-container {
-  max-width: 500px;
+  max-width: 300px;
 }
 
 .participant-email-wrapper {
@@ -120,7 +115,7 @@ p {
 
 /* photos */
 .photos-container {
-  max-width: 500px;
+  max-width: 300px;
 }
 .verification-code-container {
   max-width: 300px;
@@ -134,12 +129,10 @@ p {
 }
 .upload-container {
   margin-bottom: 30px;
-  max-width: 500px;
+  max-width: 300px;
 }
 .photos-list-item {
-  height: 45px;
   padding: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
   border: 1px solid;
-  border-color: burlywood;
 }

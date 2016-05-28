@@ -16,7 +16,7 @@
         <div class="photos-list-item">
           <span><?= $photo->name ?></span>
 
-          <div class="pull-right">
+          <div>
             <span><a href="<?= base_url() ?>photos/<?= $photo->name ?>" class="btn btn-success btn-xs">View</a></span>
             <span><a href="<?= site_url("photos/delete/" . $photo->id) ?>" class="btn btn-danger btn-xs">Delete</a></span>
           </div>
@@ -28,9 +28,9 @@
 
     <div class="actions">
       <a href="<?= site_url('photos/upload') ?>" class="btn btn-primary">Upload New Photo</a>
+    </div>
+    <div class="actions">
       <a href="<?= site_url('users/logout') ?>" class="btn btn-warning">Logout</a>
     </div>
-    <br style="clear:both; height: 0px;"/>
-
   </div>
 </div>
