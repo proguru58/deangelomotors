@@ -187,7 +187,7 @@ EOT;
 //    // send welcome email to users with code
 //    $this->load->library('email');
 //
-//    $this->email->from('info@deangelomotors.com', 'DeAngeloMotors');
+//    $this->email->from('photoshoot@deangelomotors.com', 'DeAngeloMotors');
 //    $this->email->to($email);
 //    $this->email->subject('Welcome to International Photoshoot Competition');
 //    $this->email->message($msg);
@@ -200,7 +200,7 @@ EOT;
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
     // Additional headers
-    $headers .= 'From: Manny De Angelo <info@deangelomotors.com>' . "\r\n";
+    $headers .= 'From: Manny De Angelo <photoshoot@deangelomotors.com>' . "\r\n";
 
     // Mail it
     mail($email, 'Welcome to International Photoshoot Competition', $msg, $headers);

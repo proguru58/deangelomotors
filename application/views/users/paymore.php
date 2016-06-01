@@ -110,7 +110,7 @@
       </div>
     </form>
 
-    <p>You will receive an email with a confirmation code number, once your payment has been processed.</p>
+    <p>You will get back to the photo upload page, once your payment has been processed.</p>
 
   </div>
 </div>
