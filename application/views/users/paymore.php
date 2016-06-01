@@ -1,16 +1,11 @@
 <div class="container">
-  <div class="subscribe-container center-block">
+  <div class="subscribe-extend-container center-block">
     <?php $this->load->view('layout/flash'); ?>
     <h3>Billing</h3>
 
     <p>Please complete all fields.</p>
 
-    <form role="form" class="new-user" id="new_user" action="<?php echo site_url('users/register');?>" method="post">
-
-      <div class="field">
-        <h4>Email</h4>
-        <input class="form-control" placeholder="Email" type="email" name="email" id="user_email">
-      </div>
+    <form role="form" class="new-user" id="new_user" action="<?php echo site_url('users/paymore');?>" method="post">
 
       <div class="field">
         <h4>Amount</h4>
@@ -42,7 +37,7 @@
           </select>
           <label class="amount-total-label">Total:</label>
           <label class="amount-total-value" id="amount_total_value">$2</label>
-          <p>You can upload up to 20 photos in the contest, 2$ per one photo. Please select total count and you can submit another payment later to upload more photos.</p>
+          <p>You can upload up to 20 photos in total in the contest, 2$ per one photo. Please select additional count of photos to increase.</p>
         </div>
       </div>
 

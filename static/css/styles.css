@@ -1,60 +1,18 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+p.message-panel {
+  text-align: justify;
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-div.field, div.actions {
-  margin-bottom: 10px;
-}
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
+.field, .actions {
   margin-bottom: 20px;
-  background-color: #f0f0f0;
 }
 
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
-}
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
+.mid-field {
+  margin-bottom: 10px;
 }
 
 .container {
@@ -82,6 +40,10 @@ p {
   max-width: 300px;
 }
 
+.subscribe-extend-container {
+  max-width: 300px;
+}
+
 .login-container {
   max-width: 300px;
 }
@@ -92,6 +54,21 @@ p {
 
 .subscribe-credit-card-expiration-month {
   max-width: 65px;
+  display: inline-block !important
+}
+
+.amount-photos-count-label {
+  margin-right: 5px;
+}
+.amount-photos-count {
+  max-width: 65px;
+  display: inline-block !important
+}
+.amount-total-label {
+  margin-left: 10px;
+  display: inline-block !important
+}
+.amount-total-value {
   display: inline-block !important
 }
 

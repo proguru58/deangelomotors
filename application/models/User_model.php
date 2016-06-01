@@ -14,11 +14,12 @@ class User_model extends CI_Model {
         parent::__construct();
     }
 
-    function register($email, $code)
+    function register($email, $code, $limit)
     {
         $new_user = array (
             'email' => $email,
-            'code' => $code
+            'code' => $code,
+            'limit' => $limit
         );
 
         $this->db->insert('users', $new_user);
@@ -50,6 +51,24 @@ class User_model extends CI_Model {
         $this->db->update('users', $data);
     }
 
+    function increase_limit($id, $count)
+    {
+        $query = $this->db->get_where('users', array('id'=>$id));
+
+        if($query->num_rows()==0) return false;
+        else {
+            $result = $query->result();
+            $limit = $result[0]->limit;
+
+            $data = array(
+              'limit' => $limit + $count
+            );
+
+            $this->db->where('id', $id);
+            $this->db->update('users', $data);
+        }
+    }
+
     function get_code($id)
     {
         $query = $this->db->get_where('users', array('id'=>$id));
@@ -60,6 +79,19 @@ class User_model extends CI_Model {
             $code = $result[0]->code;
 
             return $code;
+        }
+    }
+
+    function get_limit($id)
+    {
+        $query = $this->db->get_where('users', array('id'=>$id));
+
+        if($query->num_rows()==0) return 0;
+        else {
+            $result = $query->result();
+            $limit = $result[0]->limit;
+
+            return $limit;
         }
     }
 

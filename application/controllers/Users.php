@@ -7,6 +7,7 @@ class Users extends CI_Controller
   {
     parent::__construct();
     $this->load->model('user_model');
+    $this->userid = $this->session->userdata('userid');
   }
 
   function index()
@@ -28,7 +29,6 @@ class Users extends CI_Controller
     if (isset($_POST['email'])) {
       // get and update user info through session
       $email = $_POST['email'];
-      $this->userid = $this->session->userdata('userid');
       $this->user_model->update_email($this->userid, $email);
       $code = $this->user_model->get_code($this->userid);
 
@@ -49,6 +49,7 @@ class Users extends CI_Controller
     if (isset($_POST['email'])) {
       $current_user = NULL;
       $email = $_POST['email'];
+      $count = (int)$_POST['amount_photos_count'];
       $credit_card_number = $_POST['credit_card']['credit_card_number'];
       $credit_card_expiration_month = $_POST['credit_card']['credit_card_expiration_month'];
       $credit_card_expiration_year = $_POST['credit_card']['credit_card_expiration_year'];
@@ -61,14 +62,14 @@ class Users extends CI_Controller
         'x_exp_date'			=> $credit_card_expiration_month . '/' . $credit_card_expiration_year,
         'x_card_code'			=> $cvv,
         'x_description'		=> 'participant join competition billing',
-        'x_amount'				=> '2',
+        'x_amount'				=> $count * 2,
       );
       $this->authorize_net->setData($auth_net);
       if( $this->authorize_net->authorizeAndCapture() )
       {
         $this->load->library('Utils');
         $code = $this->utils->generate_random_string(32);
-        $current_user = $this->user_model->register($email, $code);
+        $current_user = $this->user_model->register($email, $code, $count);
 
         // set session current user.
         $this->session->set_userdata(array('userid' => $current_user));
@@ -88,6 +89,45 @@ class Users extends CI_Controller
     } else {
       $this->load->view('layout/header');
       $this->load->view('users/register');
+      $this->load->view('layout/footer');
+    }
+  }
+
+  function paymore()
+  {
+    if (isset($_POST['amount_photos_count'])) {
+      $current_user = NULL;
+      $count = (int)$_POST['amount_photos_count'];
+      $credit_card_number = $_POST['credit_card']['credit_card_number'];
+      $credit_card_expiration_month = $_POST['credit_card']['credit_card_expiration_month'];
+      $credit_card_expiration_year = $_POST['credit_card']['credit_card_expiration_year'];
+      $cvv = $_POST['credit_card']['cvv'];
+
+      // submit payment via authorize.net
+      $this->load->library('authorize_net');
+      $auth_net = array(
+        'x_card_num'			=> $credit_card_number,
+        'x_exp_date'			=> $credit_card_expiration_month . '/' . $credit_card_expiration_year,
+        'x_card_code'			=> $cvv,
+        'x_description'		=> 'participant increasing limit competition billing',
+        'x_amount'				=> $count * 2,
+      );
+      $this->authorize_net->setData($auth_net);
+      if( $this->authorize_net->authorizeAndCapture() )
+      {
+        $this->user_model->increase_limit($this->userid, $count);
+        $this->session->set_flashdata('result', array('message' => 'Payment has been processed successfully.','class' => 'success'));
+        redirect('photos/upload');
+      }
+      else
+      {
+        $this->session->set_flashdata('result', array('message' => 'Unable to process the payment. Messages: '.$this->authorize_net->getError(),'class' => 'danger'));
+      }
+    }
+    else
+    {
+      $this->load->view('layout/header');
+      $this->load->view('users/paymore');
       $this->load->view('layout/footer');
     }
   }

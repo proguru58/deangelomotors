@@ -20,6 +20,13 @@ class Photo_model extends CI_Model {
         return $query->result();
     }
 
+    function count($userid)
+    {
+        $query = $this->db->get_where('photos', array('owner'=>$userid));
+        $result = $query->result();
+        return count($result);
+    }
+
     function add($name)
     {
         $this->db->insert('photos', array(

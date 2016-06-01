@@ -24,8 +24,21 @@ class Photos extends CI_Controller
 
   function upload()
   {
+    if($this->photo_model->count($this->userid) >= $this->user_model->get_limit($this->userid)) {
+      $this->session->set_flashdata('result', array('message' => 'You have already reached to your limit. Please pay again to upload more photos.', 'class' => 'info'));
+      redirect('users/paymore');
+      return;
+    }
+
     $this->load->view('layout/header');
     $this->load->view('photos/upload');
+    $this->load->view('layout/footer');
+  }
+
+  function upload_success()
+  {
+    $this->load->view('layout/header');
+    $this->load->view('photos/upload_success');
     $this->load->view('layout/footer');
   }
 
@@ -53,7 +66,7 @@ class Photos extends CI_Controller
 
       $this->photo_model->add($name);
       $this->session->set_flashdata('result', array('message' => 'Photo has been uploaded successfully.','class' => 'success'));
-      redirect('photos/index');
+      redirect('photos/upload_success');
       return;
     }
 

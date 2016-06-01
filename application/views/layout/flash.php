@@ -7,6 +7,8 @@ if(isset($message)) {
       <?php
       if ($message['class'] == 'success')
         echo 'Success!';
+      elseif ($message['class'] == 'info')
+        echo 'Info!';
       elseif ($message['class'] == 'danger')
         echo 'Error!';
       ?>

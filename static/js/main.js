@@ -14,6 +14,10 @@ function initializeUserRegistrationForm($base_path) {
             }
         }
     });
+    $("#amount_photos_count").change(function() {
+        var totalIndicator = '$' + parseInt($(this).val()) * 2;
+        $('#amount_total_value').text(totalIndicator);
+    });
 }
 
 function initializeUserEmailVerifyForm() {
