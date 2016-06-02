@@ -47,6 +47,20 @@ class Users extends CI_Controller
   function register()
   {
     if (isset($_POST['email'])) {
+
+      $this->load->helper(array('form', 'url'));
+      $this->load->library('form_validation');
+
+      $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+      $this->form_validation->set_rules('amount_photos_count', 'Photos Count', 'required');
+
+      if ($this->form_validation->run() == FALSE)
+      {
+        $this->session->set_flashdata('result', array('message' => 'Invalid parameters. Messages: '. validation_errors(),'class' => 'danger'));
+        redirect('users/register');
+        return;
+      }
+
       $current_user = NULL;
       $email = $_POST['email'];
       $count = (int)$_POST['amount_photos_count'];
@@ -80,13 +94,12 @@ class Users extends CI_Controller
         $this->session->set_flashdata('result', array('message' => 'Payment has been processed successfully.','class' => 'success'));
         redirect('users/verify_email');
       }
-      else
-      {
+      else {
         $this->session->set_flashdata('result', array('message' => 'Unable to process the payment. Messages: '.$this->authorize_net->getError(),'class' => 'danger'));
         redirect('users/register');
       }
-
-    } else {
+    }
+    else {
       $this->load->view('layout/header');
       $this->load->view('users/register');
       $this->load->view('layout/footer');
