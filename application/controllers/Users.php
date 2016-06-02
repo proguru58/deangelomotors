@@ -8,6 +8,12 @@ class Users extends CI_Controller
     parent::__construct();
     $this->load->model('user_model');
     $this->userid = $this->session->userdata('userid');
+    $this->pending_userid = $this->session->userdata('pending_userid');
+
+    if ($this->router->method == 'paymore' && !isset($this->userid))
+      redirect('users/login');
+    elseif ($this->router->method == 'verify_email' && !isset($this->pending_userid))
+      redirect('users/register');
   }
 
   function index()
@@ -29,8 +35,8 @@ class Users extends CI_Controller
     if (isset($_POST['email'])) {
       // get and update user info through session
       $email = $_POST['email'];
-      $this->user_model->update_email($this->userid, $email);
-      $code = $this->user_model->get_code($this->userid);
+      $this->user_model->update_email($this->pending_userid, $email);
+      $code = $this->user_model->get_code($this->pending_userid);
 
       // resend email
       $this->send_welcome_email($email, $code);
@@ -38,8 +44,9 @@ class Users extends CI_Controller
 
       redirect('users/verify_email');
     } else {
+      $data['email'] = $this->user_model->get_email($this->pending_userid);
       $this->load->view('layout/header');
-      $this->load->view('users/verify_email');
+      $this->load->view('users/verify_email', $data);
       $this->load->view('layout/footer');
     }
   }
@@ -86,7 +93,7 @@ class Users extends CI_Controller
         $current_user = $this->user_model->register($email, $code, $count);
 
         // set session current user.
-        $this->session->set_userdata(array('userid' => $current_user));
+        $this->session->set_userdata(array('pending_userid' => $current_user));
 
         // send email
         $this->send_welcome_email($email, $code);

@@ -7,7 +7,7 @@
       <h4>Resend Email</h4>
 
       <div class="participant-email-wrapper field">
-        <input class="form-control" placeholder="Email" type="email" name="email">
+        <input class="form-control" placeholder="Email" type="email" name="email" value="<?php echo $email;?>">
       </div>
 
       <div class="actions">
