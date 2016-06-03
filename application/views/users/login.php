@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="login-container center-block">
+  <div class="login-container form-container center-block">
     <?php $this->load->view('layout/flash'); ?>
     <h3>Login</h3>
 

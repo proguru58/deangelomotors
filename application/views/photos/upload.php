@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="upload-container center-block">
+  <div class="upload-container form-container center-block">
     <?php $this->load->view('layout/flash'); ?>
     <h3>Upload Photo File</h3>
     <p>Choose your photo file to upload.</p>

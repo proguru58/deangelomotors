@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="photos-container center-block">
+  <div class="photos-container form-container center-block">
     <?php $this->load->view('layout/flash'); ?>
     <h3>Photos</h3>
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="subscribe-container center-block">
+  <div class="subscribe-container form-container center-block">
     <?php $this->load->view('layout/flash'); ?>
     <h3>Billing</h3>
 
