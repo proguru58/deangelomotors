@@ -220,9 +220,9 @@ class Users extends CI_Controller
 </head>
 <body>
 <h1>Welcome to Our Photoshoot Competition</h1>
-<p>You have been successfully subscribed to deangelomotors.com.</p>
+<p>You have been successfully subscribed to https://www.deangelomotors.com.</p>
 <p>Your participant verification code is : $code.</p>
-<p>To upload your photo in the contest, just follow this link: http://www.deangelomotors.com/app/index.php/photos/index.</p>
+<p>To upload your photo in the contest, just follow this link: https://www.deangelomotors.com/app/index.php/photos/index.</p>
 </br>
 <p>Thanks for joining and have a great day!</p>
 </body>
@@ -261,9 +261,9 @@ EOT;
 </head>
 <body>
 <h1>Welcome to Our Photoshoot Competition</h1>
-<p>You have requested your verification code in deangelomotors.com.</p>
+<p>You have requested your verification code in https://www.deangelomotors.com.</p>
 <p>Your verification verification code is : $code.</p>
-<p>To upload your photo in the contest, just follow this link: http://www.deangelomotors.com/app/index.php/photos/index.</p>
+<p>To upload your photo in the contest, just follow this link: https://www.deangelomotors.com/app/index.php/photos/index.</p>
 </br>
 <p>Thanks for contacting and have a great day!</p>
 </body>

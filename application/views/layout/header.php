@@ -18,8 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container">
   <h1 class="text-center">
-    <a href="http://www.deangelomotors.com/" title="De Angelo Motors" rel="home">
-      <img src="http://www.deangelomotors.com/wp-content/uploads/2016/05/logo-white-1.png" alt="De Angelo Motors">
+    <a href="https://www.deangelomotors.com/" title="De Angelo Motors" rel="home">
+      <img src="https://www.deangelomotors.com/wp-content/uploads/2016/05/logo-white-1.png" alt="De Angelo Motors">
     </a>
   </h1>
 </div>
