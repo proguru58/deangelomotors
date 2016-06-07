@@ -51,6 +51,25 @@ class Users extends CI_Controller
     }
   }
 
+  function forgot_code()
+  {
+    if (isset($_POST['email'])) {
+      // get and update user info through session
+      $email = $_POST['email'];
+      $code = $this->user_model->get_code_by_email($email);
+
+      // resend email
+      $this->send_vcode_email($email, $code);
+      $this->session->set_flashdata('result', array('message' => 'Email has been sent with verification code successfully .','class' => 'success'));
+
+      redirect('users/forgot_code');
+    } else {
+      $this->load->view('layout/header');
+      $this->load->view('users/forgot_code');
+      $this->load->view('layout/footer');
+    }
+  }
+
   function register()
   {
     if (isset($_POST['email'])) {
@@ -224,5 +243,46 @@ EOT;
 
     // Mail it
     mail($email, 'Welcome to International Photoshoot Competition', $msg, $headers);
+  }
+
+  function send_vcode_email($email, $code)
+  {
+    $msg = <<<EOT
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Welcome to Our Photoshoot Competition</h1>
+<p>You have requested your verification code in deangelomotors.com.</p>
+<p>Your verification verification code is : $code.</p>
+<p>To upload your photo in the contest, just follow this link: http://www.deangelomotors.com/app/index.php/photos/index.</p>
+</br>
+<p>Thanks for joining and have a great day!</p>
+</body>
+</html>
+EOT;
+
+//    // send welcome email to users with code
+//    $this->load->library('email');
+//
+//    $this->email->from('photoshoot@deangelomotors.com', 'DeAngeloMotors');
+//    $this->email->to($email);
+//    $this->email->subject('Welcome to International Photoshoot Competition');
+//    $this->email->message($msg);
+//
+//    $this->email->send();
+//    $this->email->print_debugger();
+
+    // To send HTML mail, the Content-type header must be set
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+    // Additional headers
+    $headers .= 'From: Manny De Angelo <photoshoot@deangelomotors.com>' . "\r\n";
+
+    // Mail it
+    mail($email, 'Verification Code in International Photoshoot Competition', $msg, $headers);
   }
 }

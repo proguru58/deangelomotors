@@ -21,6 +21,10 @@
       <div class="actions">
         <button name="button" type="submit" class="btn btn-primary" id="verify_code_submit">Verify</button>
       </div>
+      <div class="field">
+        <p>Forgot your verification code?</p>
+        <span><a href="<?= site_url("users/forgot_code") ?> "class="btn btn-warning">Request Verification Code</a></span>
+      </div>
     </form>
   </div>
 </div>

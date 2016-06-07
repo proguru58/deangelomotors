@@ -82,6 +82,19 @@ class User_model extends CI_Model {
         }
     }
 
+    function get_code_by_email($email)
+    {
+        $query = $this->db->get_where('users', array('email'=>$email));
+
+        if($query->num_rows()==0) return false;
+        else {
+            $result = $query->result();
+            $code = $result[0]->code;
+
+            return $code;
+        }
+    }
+
     function get_email($id)
     {
         $query = $this->db->get_where('users', array('id'=>$id));
