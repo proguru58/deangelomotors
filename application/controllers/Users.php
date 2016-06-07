@@ -58,6 +58,12 @@ class Users extends CI_Controller
       $email = $_POST['email'];
       $code = $this->user_model->get_code_by_email($email);
 
+      if (!$code) {
+        $this->session->set_flashdata('result', array('message' => $email.' is not registered email. Please type correct email address.','class' => 'danger'));
+        redirect('users/forgot_code');
+        return;
+      }
+
       // resend email
       $this->send_vcode_email($email, $code);
       $this->session->set_flashdata('result', array('message' => 'Email has been sent with verification code successfully .','class' => 'success'));
@@ -259,7 +265,7 @@ EOT;
 <p>Your verification verification code is : $code.</p>
 <p>To upload your photo in the contest, just follow this link: http://www.deangelomotors.com/app/index.php/photos/index.</p>
 </br>
-<p>Thanks for joining and have a great day!</p>
+<p>Thanks for contacting and have a great day!</p>
 </body>
 </html>
 EOT;
