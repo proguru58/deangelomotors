@@ -11,7 +11,7 @@
       </div>
 
       <div class="actions">
-        <button name="button" type="submit" class="btn btn-primary">Resend</button>
+        <button name="button" type="submit" class="btn btn-primary">Send</button>
       </div>
 
     </form>
