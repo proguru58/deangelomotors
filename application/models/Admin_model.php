@@ -1,6 +1,7 @@
 <?php
 
-class Admin_model extends CI_Model {
+class Admin_model extends CI_Model
+{
 
   /**
    * Validate the login's data with the database
@@ -14,8 +15,7 @@ class Admin_model extends CI_Model {
     $this->db->where('password', $password);
     $query = $this->db->get('admins');
 
-    if(count($query->result()) == 1)
-    {
+    if (count($query->result()) == 1) {
       return true;
     }
   }
@@ -29,8 +29,7 @@ class Admin_model extends CI_Model {
   {
     $query = $this->db->select('admin_data')->get('ci_sessions');
     $admin = array(); /* array to store the admin data we fetch */
-    foreach ($query->result() as $row)
-    {
+    foreach ($query->result() as $row) {
       $udata = unserialize($row->admin_data);
       /* put data in array using adminname as key */
       $admin['adminname'] = $udata['adminname'];
@@ -49,11 +48,11 @@ class Admin_model extends CI_Model {
     $this->db->where('adminname', $this->input->post('adminname'));
     $query = $this->db->get('admins');
 
-    if($query->num_rows > 0){
+    if ($query->num_rows > 0) {
       echo '<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>';
       echo "Adminname already taken";
       echo '</strong></div>';
-    }else{
+    } else {
 
       $new_member_insert_data = array(
         'email_address' => $this->input->post('email_address'),
