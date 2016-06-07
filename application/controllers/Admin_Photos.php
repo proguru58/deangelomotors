@@ -30,8 +30,6 @@ class Admin_Photos extends CI_Controller
     $order = $this->input->post('order');
     $order_type = $this->input->post('order_type');
 
-    var_dump($search_string);
-
     //pagination settings
     $config['per_page'] = 5;
     $config['base_url'] = base_url() . 'admin/photos';
