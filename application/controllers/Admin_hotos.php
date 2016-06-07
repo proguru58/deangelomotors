@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Photos extends CI_Controller
+class Admin_photos extends CI_Controller
 {
 
   /**
