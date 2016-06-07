@@ -57,6 +57,13 @@
   ?>
   <fieldset>
     <div class="control-group">
+      <label for="inputError" class="control-label">Photo</label>
+
+      <div class="controls">
+        <a href="<?= base_url() ?>photos/<?= $photo[0]['name'] ?>">View</a>
+      </div>
+    </div>
+    <div class="control-group">
       <label for="inputError" class="control-label">Name</label>
 
       <div class="controls">

@@ -81,7 +81,7 @@
           echo '<td>' . $row['name'] . '</td>';
           echo '<td>' . $row['participant_email'] . '</td>';
           echo '<td class="crud-actions">
-                  <a href="' . site_url("admin") . '/photos/update/' . $row['id'] . '" class="btn btn-info">view & edit</a>
+                  <a href="' . base_url() . 'photos/' . $row['name'] . '" class="btn btn-info">View</a>
                   <a href="' . site_url("admin") . '/photos/delete/' . $row['id'] . '" class="btn btn-danger">delete</a>
                 </td>';
           echo '</tr>';
