@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en-US">
 <head>
-  <title>CodeIgniter Admin Sample Project</title>
+  <title>De Angelo Motors Admin</title>
   <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/bootstrap.2.min.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/admin/styles.css"/>
@@ -17,16 +17,16 @@
 	      <a class="brand">De Angelo Motors</a>
 	      <ul class="nav">
 	        <li <?php if($this->uri->segment(2) == 'photos'){echo 'class="active"';}?>>
-	          <a href="<?php echo base_url(); ?>admin/photos">Photos</a>
+	          <a href="<?php echo base_url(); ?>index.php/admin/photos">Photos</a>
 	        </li>
 	        <li <?php if($this->uri->segment(2) == 'participants'){echo 'class="active"';}?>>
-	          <a href="<?php echo base_url(); ?>admin/participants">Participants</a>
+	          <a href="<?php echo base_url(); ?>index.php/admin/participants">Participants</a>
 	        </li>
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">System <b class="caret"></b></a>
 	          <ul class="dropdown-menu">
 	            <li>
-	              <a href="<?php echo base_url(); ?>admin/logout">Logout</a>
+	              <a href="<?php echo base_url(); ?>index.php/admin/logout">Logout</a>
 	            </li>
 	          </ul>
 	        </li>
