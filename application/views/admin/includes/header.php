@@ -3,19 +3,24 @@
 <head>
   <title>CodeIgniter Admin Sample Project</title>
   <meta charset="utf-8">
-  <link href="<?php echo base_url(); ?>assets/css/admin/global.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/bootstrap.2.min.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/admin/styles.css"/>
+	<script src="<?php echo base_url(); ?>static/js/jquery-2.2.4.min.js"></script>
+	<script src="<?php echo base_url(); ?>static/js/jquery.validate.min.js"></script>
+	<script src="<?php echo base_url(); ?>static/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>static/js/admin/main.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
 	  <div class="navbar-inner">
 	    <div class="container">
-	      <a class="brand">Project Name</a>
+	      <a class="brand">De Angelo Motors</a>
 	      <ul class="nav">
-	        <li <?php if($this->uri->segment(2) == 'products'){echo 'class="active"';}?>>
-	          <a href="<?php echo base_url(); ?>admin/products">Products</a>
+	        <li <?php if($this->uri->segment(2) == 'photos'){echo 'class="active"';}?>>
+	          <a href="<?php echo base_url(); ?>admin/photos">Photos</a>
 	        </li>
-	        <li <?php if($this->uri->segment(2) == 'manufacturers'){echo 'class="active"';}?>>
-	          <a href="<?php echo base_url(); ?>admin/manufacturers">Manufacturers</a>
+	        <li <?php if($this->uri->segment(2) == 'participants'){echo 'class="active"';}?>>
+	          <a href="<?php echo base_url(); ?>admin/participants">Participants</a>
 	        </li>
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">System <b class="caret"></b></a>

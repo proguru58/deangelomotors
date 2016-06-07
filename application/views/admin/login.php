@@ -14,7 +14,7 @@
 <div class="container login">
   <?php
   $attributes = array('class' => 'form-signin');
-  echo form_open('admin/validate_credentials', $attributes);
+  echo form_open('admin/login/validate_credentials', $attributes);
   echo '<h2 class="form-signin-heading">Login</h2>';
   echo form_input('adminname', '', 'placeholder="Admin"');
   echo form_password('password', '', 'placeholder="Password"');
