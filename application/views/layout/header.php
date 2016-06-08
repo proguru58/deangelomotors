@@ -13,6 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>static/js/jquery.validate.min.js"></script>
   <script src="<?php echo base_url(); ?>static/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url(); ?>static/js/main.js"></script>
+
+  <link rel="icon" href="https://www.deangelomotors.com/wp-content/uploads/2016/05/logo-white-1.png">
 </head>
 <body>
 
