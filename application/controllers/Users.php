@@ -83,7 +83,7 @@ class Users extends CI_Controller
       $this->load->helper(array('form', 'url'));
       $this->load->library('form_validation');
 
-      $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
       $this->form_validation->set_rules('amount_photos_count', 'Photos Count', 'required');
 
       if ($this->form_validation->run() == FALSE)
@@ -113,9 +113,15 @@ class Users extends CI_Controller
       $this->authorize_net->setData($auth_net);
       if( $this->authorize_net->authorizeAndCapture() )
       {
-        $this->load->library('Utils');
-        $code = $this->utils->generate_random_string(32);
-        $current_user = $this->user_model->register($email, $code, $count);
+        if($this->user_model->check_email($email)) {
+          $this->load->library('Utils');
+          $code = $this->utils->generate_random_string(32);
+          $current_user = $this->user_model->register($email, $code, $count);
+        } else {
+          $this->user_model->increase_limit_by_email($email, $count);
+          $code = $this->user_model->get_code_by_email($email);
+          $current_user = $this->user_model->get_id_by_email($email);
+        }
 
         // set session current user.
         $this->session->set_userdata(array('pending_userid' => $current_user));

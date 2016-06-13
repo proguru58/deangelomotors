@@ -1,7 +1,7 @@
 function initializeUserRegistrationForm($base_path) {
     $("#new_user").validate({
         rules: {
-            "email": {required: true, email: true, remote: $base_path+"/users/check_email"},
+            "email": {required: true, email: true},
             "credit_card[cardholder_name]": {required: true},
             "credit_card[credit_card_number]": {required: true, number: true},
             "credit_card[credit_card_expiration_month]": {required: true, number: true, min: 1, max: 12},

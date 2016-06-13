@@ -96,6 +96,37 @@ class User_model extends CI_Model
     }
   }
 
+  function get_id_by_email($email)
+  {
+    $query = $this->db->get_where('users', array('email' => $email));
+
+    if ($query->num_rows() == 0) return false;
+    else {
+      $result = $query->result();
+      $code = $result[0]->id;
+
+      return $code;
+    }
+  }
+
+  function increase_limit_by_email($email, $count)
+  {
+    $query = $this->db->get_where('users', array('email' => $email));
+
+    if ($query->num_rows() == 0) return false;
+    else {
+      $result = $query->result();
+      $limit = $result[0]->limit;
+
+      $data = array(
+        'limit' => $limit + $count
+      );
+
+      $this->db->where('email', $email);
+      $this->db->update('users', $data);
+    }
+  }
+
   function get_email($id)
   {
     $query = $this->db->get_where('users', array('id' => $id));
