@@ -14,8 +14,8 @@
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
       var poller = function() {
-        jQuery.get('http://www.deangelomotors.com/app/index.php/live/counter', function(response) {
-          $('#live_counter_detail').text('Current grand prize is $'+numberWithCommas(response));
+        jQuery.get('/app/index.php/live/counter', function(response) {
+          jQuery('#live_counter_detail').text('Current grand prize is $'+numberWithCommas(response));
         });
       };
       poller();
