@@ -150,6 +150,8 @@ class Admin_photos extends CI_Controller
 
     }//!isset($participant_id) && !isset($search_string) && !isset($order)
 
+    $config['base_url'] = base_url().'index.php/admin/photos';
+
     //initializate the panination helper
     $this->pagination->initialize($config);
 
