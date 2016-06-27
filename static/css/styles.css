@@ -114,3 +114,7 @@ p {
   border: 1px solid;
   border-color: #DDDDDD;
 }
+
+.cc-logos-container {
+  max-width: 340px;
+}

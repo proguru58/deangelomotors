@@ -113,6 +113,9 @@
     <p>You will get back to the photo upload page, once your payment has been processed.</p>
 
   </div>
+  <div class="cc-logos-container center-block">
+    <img src="<?php echo base_url(); ?>static/images/cc-logos.png">
+  </div>
 </div>
 
 <script>

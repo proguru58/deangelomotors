@@ -118,8 +118,10 @@
     <p>You will receive an email with a confirmation code number, once your payment has been processed.</p>
 
   </div>
+  <div class="cc-logos-container center-block">
+    <img src="<?php echo base_url(); ?>static/images/cc-logos.png">
+  </div>
 </div>
-
 <script>
   $(function () {
     initializeUserRegistrationForm("<?php echo site_url();?>");
