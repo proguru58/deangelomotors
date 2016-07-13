@@ -9,7 +9,16 @@
 
       <div class="field">
         <h4>Email</h4>
-        <input class="form-control" placeholder="Email" type="email" name="email" id="user_email">
+        <div class="row mid-field">
+          <div class="col-md-12">
+            <input class="form-control" placeholder="Email" type="email" name="email" id="user_email">
+          </div>
+        </div>
+        <div class="row mid-field">
+          <div class="col-md-12">
+            <input class="form-control" placeholder="Confirm Email" type="text" name="email_again" id="user_email_again">
+          </div>
+        </div>
       </div>
 
       <div class="field">

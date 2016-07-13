@@ -2,6 +2,7 @@ function initializeUserRegistrationForm($base_path) {
     $("#new_user").validate({
         rules: {
             "email": {required: true, email: true},
+            "email_again": {equalTo: "#user_email"},
             "credit_card[cardholder_name]": {required: true},
             "credit_card[credit_card_number]": {required: true, number: true},
             "credit_card[credit_card_expiration_month]": {required: true, number: true, min: 1, max: 12},
@@ -11,6 +12,9 @@ function initializeUserRegistrationForm($base_path) {
         messages: {
             "email": {
                 remote: $.validator.format("{0} is already in use.")
+            },
+            "email_again": {
+                equalTo: $.validator.format("Please repeat the same email address.")
             }
         }
     });
